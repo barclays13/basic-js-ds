@@ -39,6 +39,6 @@ module.exports = class Queue {
     let data = this.storage.value;
     this.storage = this.storage.next;
     return data;
-  }
-
+  } 
+  
 }
