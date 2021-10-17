@@ -10,7 +10,6 @@ module.exports = class BinarySearchTree {
 
   root() {
     return this.tree;
-    
   }
 
   add( data ) {
@@ -18,17 +17,26 @@ module.exports = class BinarySearchTree {
     this.tree === null ? this.tree = newNode : this.addNode(this.tree, newNode);
   }
 
-  addNode(root, newNode) {
-    if (newNode.data < root.data) {
-      root.left === null ? root.left = newNode : this.addNode(root.left, newNode);
-    } else if (newNode.data > root.data) {
-      root.right === null ? root.right = newNode : this.addNode(root.right, newNode);
+  addNode(tree, newNode) {
+    if (newNode.data < tree.data) {
+      tree.left === null ? tree.left = newNode : this.addNode(tree.left, newNode);
+    } else if (newNode.data > tree.data) {
+      tree.right === null ? tree.right = newNode : this.addNode(tree.right, newNode);
     }
   }
 
-  has(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  has( data ) {
+    return this.getHas(this.tree, data)
+  }
+
+  getHas(tree, data) {
+    if (tree.data === data) {
+      return true;
+    } else if (tree.data > data) {
+      return tree.left === null ? false : this.getHas(tree.left, data);
+    } else if (tree.data < data) {
+      return tree.right === null ? false : this.getHas(tree.right, data);
+    }
   }
 
   find(/* data */) {
@@ -53,7 +61,10 @@ module.exports = class BinarySearchTree {
 }
 
 // const bin = new BinarySearchTree();
-// console.log('bin.add(2)', bin.add(2))
-// console.log('bin.add(3)', bin.add(3))
-// console.log('bin.add(4)', bin.add(4))
-// console.log('bin.add(5)', bin.add(5))
+
+// bin.add(2)
+// bin.add(1)
+// bin.add(3)
+// bin.add(4)
+// bin.add(5)
+//  bin.has(2)
