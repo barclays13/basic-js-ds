@@ -87,22 +87,20 @@ module.exports = class BinarySearchTree {
   } 
 
   min() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if ( this.tree == null ) return null;
+    return this.getMin( this.tree );
   }
+
+  getMin( tree ) {
+    return tree.left === null ? tree.data : this.getMin( tree.left );
+  } 
 
   max() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if ( this.tree == null ) return null;
+    return this.getMax(this.tree);
   }
+
+  getMax( tree ) {
+    return tree.right === null ? tree.data : this.getMax( tree.right );
+  } 
 }
-
-// const bin = new BinarySearchTree();
-
-// bin.add(2)
-// bin.add(1)
-// bin.add(3)
-// bin.add(4)
-// bin.add(5)
-// console.log('bin.has(5)', bin.has(3))
-// console.log('bin.remove(5)', bin.remove(3))
